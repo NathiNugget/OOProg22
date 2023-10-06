@@ -4,13 +4,17 @@ public class Warrior
     #region Instance fields
     private string _name;
     private int _level;
+    private int _hitpoints;
+    private bool _dead;
     #endregion
 
     #region Constructor
-    public Warrior(string name)
+    public Warrior(string name, int hitpoints)
     {
         _name = name;
         _level = 1;
+        _hitpoints = hitpoints;
+        _dead = false;
     }
     #endregion
 
@@ -24,6 +28,12 @@ public class Warrior
     {
         get { return _level; }
     }
+
+    public int Hitpoints { 
+        get { return _hitpoints; }
+    }
+
+    
     #endregion
 
     #region Methods
@@ -31,5 +41,21 @@ public class Warrior
     {
         _level = _level + 1;
     }
+
+    public void ReceiveDamage(int dmg)
+    {
+            _hitpoints -=  dmg;
+    }
+
+    public bool Dead() {
+            if (_hitpoints <= 0) return true;
+        return false; }
+
+    public int DamageToDeal() {
+        Random rnd = new Random();
+        return rnd.Next(10, 30);
+        
+    }
+    
     #endregion
 }
