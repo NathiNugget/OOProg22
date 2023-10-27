@@ -8,14 +8,37 @@ public class Barometer
 
     public string WeatherDescription
     {
-        get { return "All weather is nice!"; }
+        get
+        {
+            if (Pressure < 980)
+            {
+                return "Stormy"; 
+            }
+            else if (980 <= Pressure && Pressure <= 1000)
+            {
+                return "Rainy"; 
+            }
+            else if (Pressure >= 1000 && Pressure <= 1020)
+            {
+                return "Changing"; 
+            }
+            else if (Pressure >= 1020 &&  Pressure <= 1040)
+            {
+                return "Fair"; 
+            }
+            else if (Pressure > 1040)
+            {
+                return "Very dry"; 
+            }
+            return "Weather is extreme right now"; 
+        }
     }
     #endregion
 
     #region Constructor
-    public Barometer()
+    public Barometer(int i)
     {
-        Pressure = 1000.0;
+        Pressure = i;
     }
     #endregion
 }

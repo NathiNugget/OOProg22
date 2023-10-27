@@ -5,22 +5,30 @@
 /// 2) The character can deal damage
 /// 3) The character can receive damage, causing the hit points to decrease
 /// </summary>
-public class Hero
+public class Character
 {
     #region Instance fields
+    private String _state;
     private int _hitPoints;
     private NumberGenerator _generator;
     private BattleLog _log;
+    private int _minDamage;
+    private int _maxDamage;
     #endregion
 
     #region Constructor
     /// <summary>
     /// Create a Hero, using references to a random number generator and a battle log
     /// </summary>
-    public Hero(NumberGenerator generator, BattleLog log)
+    public Character(String state, NumberGenerator generator, BattleLog log, int mindmg, int maxdmg, int hitpoints)
     {
+        _state = state;
         _generator = generator;
         _log = log;
+        _hitPoints = hitpoints;
+        _minDamage = mindmg;
+        _maxDamage = maxdmg;
+
         Reset();
     }
     #endregion
@@ -50,8 +58,8 @@ public class Hero
     /// </summary>
     public int DealDamage()
     {
-        int damage = _generator.Next(10, 30);
-        string message = $"Hero dealt {damage} damage!";
+        int damage = _generator.Next(_minDamage, _maxDamage);
+        string message = $"{_state} dealt {damage} damage!";
         _log.Save(message);
         return damage;
     }
@@ -63,12 +71,12 @@ public class Hero
     public void ReceiveDamage(int points)
     {
         _hitPoints = _hitPoints - points;
-        string message = $"Hero receives {points} damage, and is down to {_hitPoints} hit points";
+        string message = $"{_state} receives {points} damage, and is down to {_hitPoints} hit points";
         _log.Save(message);
 
         if (Dead)
         {
-            _log.Save("Hero died!");
+            _log.Save($"{_state} died!");
         }
     }
     #endregion

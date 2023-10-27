@@ -91,3 +91,7 @@ while (c8 > 0 && c8 < 20)
 }
 Console.WriteLine("End of Case 8");
 
+int h1 = 8;
+int h2 = 10;
+Console.WriteLine($"Bitwise: {h2 & h1}");
+Console.WriteLine($"You pressed {Console.ReadKey().Key}");

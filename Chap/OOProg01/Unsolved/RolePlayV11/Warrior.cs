@@ -56,6 +56,8 @@ public class Warrior
         return rnd.Next(10, 30);
         
     }
+
+    public enum Race race = {0 = "Sort", 1 = "Hvid"); 
     
     #endregion
 }

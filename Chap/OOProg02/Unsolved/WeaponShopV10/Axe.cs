@@ -14,4 +14,23 @@ public class Axe : Weapon
     {
     }
     #endregion
+
+    #region Methods
+
+    public int DamageFromAxe()
+    {
+        int _damage = base.CalculateDamage();
+        base.MaxDamage -= 3; 
+        base.MinDamage -= 3;
+        return _damage;
+    }
+
+    public void Sharpen()
+    {
+        base.MaxDamage = InitialAxeMaxDamage; 
+        base.MinDamage = InitialAxeMinDamage;
+    }
+    #endregion
+
+
 }

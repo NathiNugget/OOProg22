@@ -25,5 +25,15 @@ public class MysticNumbers
 
         return result;
     }
+
+    public int TwoNumbers( int a, int b)
+    {
+        if (b > a)
+        {
+            return b; 
+        }
+        return a;
+    }
+
     #endregion
 }

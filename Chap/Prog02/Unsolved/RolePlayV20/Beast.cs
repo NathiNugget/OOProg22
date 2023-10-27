@@ -41,7 +41,7 @@ public class Beast
     /// </summary>
     public void Reset()
     {
-        _hitPoints = 90;
+        _hitPoints = 100;
     }
 
     /// <summary>
@@ -50,7 +50,7 @@ public class Beast
     /// </summary>
     public int DealDamage()
     {
-        int damage = _generator.Next(10, 25);
+        int damage = _generator.Next(10, 30);
         string message = $"Beast dealt {damage} damage!";
         _log.Save(message);
         return damage;
